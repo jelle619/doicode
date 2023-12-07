@@ -1,11 +1,9 @@
 # Front-end
-<img height="128" width="128" src="./public/logo.png">
+<img height="192" width="192" src="./public/logo.png">
 
 With Do I Code, you can achieve better insight into the progress you've made inside of GitHub repositories using easy-to-understand visualisations. To get started, simply login with a GitHub account and choose a repository.
 
-> 🇳🇱 Currently, the only supported language in the user-interface is Dutch.
-
-This is the fron-endcomponent of the Do I Code application, which makes use of Next.js. While this component can function on its own, other components are required to make use of all the functionality Do I Code gets to offer.
+This is the fron-endcomponent of the Do I Code application, which makes use of Next.js. Currently, the only supported language in the user-interface is Dutch. While this component can function on its own, other components are required to make use of all the functionality Do I Code gets to offer.
 
 ## Setup
 This application requires you to register a GitHub OAuth application. Create an OAuth application in your GitHub account or organization and set `Authorization callback URL` to `http://localhost:3000/api/auth/callback/github`. If you plan to use the application outside of a local development environment, replace `http://localhost:3000` accordingly.
@@ -19,8 +17,7 @@ A few design guidelines have been divised to improve the consistency or the inte
 The font has yet to be determined.
 
 ### Color Palette
-<img src="./public/palette.svg">
-> The logo was used as a baseline for generating the color palette.
+[![Color Palette](./public/palette.png)](./public/palette.pdf)
 
 ## Issues
 When reporting issues, please be as descriptive as possible.
