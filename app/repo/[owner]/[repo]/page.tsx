@@ -21,7 +21,6 @@ async function fetchRepository(owner: string, repo: string) {
   }
 
   const data = await response.json();
-  // console.log(data);
   
   return data;
 }
@@ -43,7 +42,6 @@ async function fetchIssues(owner: string, repo: string) {
   }
 
   const data = await response.json();
-  // console.log(data);
 
   return data;
 }

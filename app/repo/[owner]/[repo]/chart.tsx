@@ -12,7 +12,7 @@ function issueParser(data: any[]) {
     let start = labelParser(issue["labels"]);
     let closed = false;
     if (issue["state"] === "closed") { closed = true };
-    
+
     if (start != null) {
       const task: Task = {
         name: issue["title"],
@@ -28,7 +28,6 @@ function issueParser(data: any[]) {
     }
   }
 
-  console.log(tasks);
   return tasks;
 }
 
@@ -50,31 +49,31 @@ function labelParser(data: any) {
 }
 
 function weekParser(week: number) {
-    let year = new Date().getFullYear();
+  let year = new Date().getFullYear();
 
-    if (week < 1 || week > 53) {
-      throw new RangeError("ISO 8601 weeks are numbered from 1 to 53");
-    }
-  
-    const simple = new Date(year, 0, 1 + (week - 1) * 7);
-    const dayOfWeek = simple.getDay();
-    const isoWeekStart = simple;
+  if (week < 1 || week > 53) {
+    throw new RangeError("ISO 8601 weeks are numbered from 1 to 53");
+  }
 
-    // get the monday past, and add a week if the day was friday, saturday or sunday.
-    isoWeekStart.setDate(simple.getDate() - dayOfWeek + 1);
-    if (dayOfWeek > 4) {
-        isoWeekStart.setDate(isoWeekStart.getDate() + 7);
-    }
+  const simple = new Date(year, 0, 1 + (week - 1) * 7);
+  const dayOfWeek = simple.getDay();
+  const isoWeekStart = simple;
 
-    // the latest possible iso week starts on december 28 of the current year
-    if (isoWeekStart.getFullYear() > year ||
-        (isoWeekStart.getFullYear() == year &&
-         isoWeekStart.getMonth() == 11 &&
-         isoWeekStart.getDate() > 28)) {
-        throw new RangeError(`${year} has no ISO week ${week}`);
-    }
-  
-    return isoWeekStart;
+  // get the monday past, and add a week if the day was friday, saturday or sunday.
+  isoWeekStart.setDate(simple.getDate() - dayOfWeek + 1);
+  if (dayOfWeek > 4) {
+    isoWeekStart.setDate(isoWeekStart.getDate() + 7);
+  }
+
+  // the latest possible iso week starts on december 28 of the current year
+  if (isoWeekStart.getFullYear() > year ||
+    (isoWeekStart.getFullYear() == year &&
+      isoWeekStart.getMonth() == 11 &&
+      isoWeekStart.getDate() > 28)) {
+    throw new RangeError(`${year} has no ISO week ${week}`);
+  }
+
+  return isoWeekStart;
 }
 
 function dateParser(date: Date, days: number) {
@@ -84,6 +83,20 @@ function dateParser(date: Date, days: number) {
 }
 
 export default function Chart({ data }: { data: any }) {
+  let array = issueParser(data);
+  if (array.length === 0) {
+    return (
+      <>
+        <p>Het lijkt erop dat deze repository niet goed is ingesteld. Bij het instellen van je repository, let op het volgende.</p>
+        <li>
+          <ul>Zorg dat je repositories gebruikt maakt van <Link href="https://docs.github.com/en/issues">Issues</Link>.</ul>
+          <ul>Maak labels aan voor iedere week van het jaar. Gebruik hiervoor het formaat "week-x", waarbij "x" het weeknummer is.</ul>
+          <ul>Als je pas je repository goed hebt ingesteld, kan het nog even duren voordat deze data beschikbaar komt.</ul>
+        </li>
+        <p>Heb je je repository goed ingesteld, maar krijg je nog steeds deze melding? Probeer het dan later opnieuw.</p>
+      </>
+    )
+  }
   return (
     <>
       <Gantt tasks={issueParser(data)} />
