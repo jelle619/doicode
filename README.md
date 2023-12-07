@@ -10,7 +10,7 @@ This application requires you to register a GitHub OAuth application. Create an 
 
 To run the application locally, you will need to have Node.js and the NPM package manager installed. You can initialize a Node.js as usual by cloning the repository and running `npm install` inside of it. To start the application (with development and debugging tools), run `npm run dev`.
 
-### `.env.local` File
+### Configure `.env.local` File
 In order to run the application, you need to create a `.env.local` file in the root of the project containing environment variables. The following environment variables will need to be configured appropriately.
 
 ```
