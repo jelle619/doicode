@@ -7,7 +7,7 @@ export default function Options() {
   if (status === "loading") {
     return <span>Laden...</span>
   } else if (status === "unauthenticated") {
-    return <a onClick={() => signIn()}>Inloggen met GitHub</a>
+    return <a onClick={() => signIn()}>Inloggen</a>
   } else if (status === "authenticated") {
     return (
       <>
