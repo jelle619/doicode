@@ -90,7 +90,7 @@ export default function Chart({ data }: { data: any }) {
         <p>Het lijkt erop dat deze repository niet goed is ingesteld. Bij het instellen van je repository, let op het volgende.</p>
         <li>
           <ul>Zorg dat je repositories gebruikt maakt van <Link href="https://docs.github.com/en/issues">Issues</Link>.</ul>
-          <ul>Maak labels aan voor iedere week van het jaar. Gebruik hiervoor het formaat "week-x", waarbij "x" het weeknummer is.</ul>
+          <ul>Maak labels aan voor iedere week van het jaar. Gebruik hiervoor het formaat &quot;week-x&quot;, waarbij &quot;x&quot; het weeknummer is.</ul>
           <ul>Als je pas je repository goed hebt ingesteld, kan het nog even duren voordat deze data beschikbaar komt.</ul>
         </li>
         <p>Heb je je repository goed ingesteld, maar krijg je nog steeds deze melding? Probeer het dan later opnieuw.</p>
