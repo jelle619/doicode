@@ -14,7 +14,7 @@ To run the application locally, you will need to have Node.js and the NPM packag
 A few design guidelines have been divised to improve the consistency or the interface of the application. Please adhere to these guidelines when developing the interface and update them when necessary.
 
 ### Font
-The font has yet to be determined.
+The application makes use of the "Sora" font, designed by Jonathan Barnbrook and Julián Moncada. More information can be found on [Google Fonts](https://fonts.google.com/specimen/Sora).
 
 ### Color Palette
 [![Color Palette](./public/palette.png)](./public/palette.pdf)
