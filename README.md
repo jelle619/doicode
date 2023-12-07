@@ -10,6 +10,15 @@ This application requires you to register a GitHub OAuth application. Create an 
 
 To run the application locally, you will need to have Node.js and the NPM package manager installed. You can initialize a Node.js as usual by cloning the repository and running `npm install` inside of it. To start the application (with development and debugging tools), run `npm run dev`.
 
+### `.env.local` File
+In order to run the application, you need to create a `.env.local` file in the root of the project containing environment variables. The following environment variables will need to be configured appropriately.
+
+```
+GITHUB_CLIENT_ID='' # provided when creating an oauth app with github
+GITHUB_CLIENT_SECRET='' # provided when creating an oauth app with github
+NEXTAUTH_SECRET='' # run to generate: openssl rand -base64 32
+```
+
 ## Design Guidelines
 A few design guidelines have been divised to improve the consistency or the interface of the application. Please adhere to these guidelines when developing the interface and update them when necessary.
 
