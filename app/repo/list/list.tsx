@@ -17,7 +17,7 @@ export default async function List() {
 
   if (!response.ok) {
     return (
-      <p>Er is een fout opgetreden bij het ophalen van je repositories. Controller de <Link href="https://www.githubstatus.com/">GitHub server status</Link> en probeer het later opnieuw.</p>
+      <p>Er is een fout opgetreden bij het ophalen van je repositories. Controlleer de <Link href="https://www.githubstatus.com/">GitHub server status</Link> en probeer het later opnieuw.</p>
     )
   }
 
