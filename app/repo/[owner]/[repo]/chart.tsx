@@ -22,7 +22,7 @@ function issueParser(data: any[]) {
         type: "task",
         progress: closed ? 100 : 0,
         isDisabled: true,
-        styles: { progressColor: '#ffbb54', progressSelectedColor: '#ff9e0d' },
+        styles: { progressColor: '#0B4A69', progressSelectedColor: '#0B4A69' },
       }
       tasks.push(task);
     }
@@ -95,7 +95,7 @@ const errorText =
 
 export default function Chart({ data }: { data: any }) {
   let array = issueParser(data);
-  
+
   if (array.length === 0) {
     return (errorText)
   }
