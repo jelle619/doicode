@@ -7,7 +7,7 @@ export default async function List() {
   const session = await getServerSession(authOptions);
   
   // https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#list-repositories-for-the-authenticated-user
-  const response = await fetch("https://api.github.com/user/repos?sort=updated", {
+  const response = await fetch("https://api.github.com/user/repos?sort=updated&per_page=100", {
     headers: {
       'Authorization': `Bearer ${session.access_token}`,
       'X-GitHub-Api-Version': '2022-11-28',
@@ -25,11 +25,11 @@ export default async function List() {
 
   return (
     <>
-      <li>
+      <ul>
         {data.map((repository: any) =>
-          (<ul key={repository["id"]}><Link href={"/repo/" + repository["full_name"]}>{repository["name"]}</Link></ul>)
+          (<li key={repository["id"]}><Link href={"/repo/" + repository["full_name"]}>{repository["full_name"]}</Link></li>)
         )}
-      </li>
+      </ul>
     </>
   )
 }

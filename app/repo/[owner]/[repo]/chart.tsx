@@ -82,24 +82,23 @@ function dateParser(date: Date, days: number) {
   return result;
 }
 
+const errorText =
+  <>
+    <p>Het lijkt erop dat deze repository niet goed is ingesteld. Bij het instellen van je repository, let op het volgende.</p>
+    <ul>
+      <li>Zorg dat je repositories gebruikt maakt van <Link href="https://docs.github.com/en/issues">Issues</Link>.</li>
+      <li>Maak labels aan voor iedere week van het jaar. Gebruik hiervoor het formaat &quot;week-x&quot;, waarbij &quot;x&quot; het weeknummer is.</li>
+      <li>Als je pas je repository goed hebt ingesteld, kan het nog even duren voordat deze data beschikbaar komt.</li>
+    </ul>
+    <p>Heb je je repository goed ingesteld, maar krijg je nog steeds deze melding? Neem met ons contact op via <Link href="mailto:&#099;&#111;&#110;&#116;&#097;&#099;&#116;&#064;&#100;&#111;&#045;&#105;&#045;&#099;&#111;&#100;&#101;&#046;&#099;&#111;&#109;">&#099;&#111;&#110;&#116;&#097;&#099;&#116;&#064;&#100;&#111;&#045;&#105;&#045;&#099;&#111;&#100;&#101;&#046;&#099;&#111;&#109;</Link>.</p>
+  </>
+
 export default function Chart({ data }: { data: any }) {
   let array = issueParser(data);
+  
   if (array.length === 0) {
-    return (
-      <>
-        <p>Het lijkt erop dat deze repository niet goed is ingesteld. Bij het instellen van je repository, let op het volgende.</p>
-        <li>
-          <ul>Zorg dat je repositories gebruikt maakt van <Link href="https://docs.github.com/en/issues">Issues</Link>.</ul>
-          <ul>Maak labels aan voor iedere week van het jaar. Gebruik hiervoor het formaat &quot;week-x&quot;, waarbij &quot;x&quot; het weeknummer is.</ul>
-          <ul>Als je pas je repository goed hebt ingesteld, kan het nog even duren voordat deze data beschikbaar komt.</ul>
-        </li>
-        <p>Heb je je repository goed ingesteld, maar krijg je nog steeds deze melding? Probeer het dan later opnieuw.</p>
-      </>
-    )
+    return (errorText)
   }
-  return (
-    <>
-      <Gantt tasks={issueParser(data)} />
-    </>
-  )
+
+  return <Gantt tasks={issueParser(data)} />;
 }
