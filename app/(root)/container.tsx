@@ -14,6 +14,7 @@ export default function Container({ children }: { children: React.ReactNode }) {
             bg-white/80
             gap-4
             p-4
+            max-h-[100svh]
             lg:w-1/2
             lg:rounded-lg
             lg:p-8
