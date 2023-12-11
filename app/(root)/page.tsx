@@ -17,7 +17,7 @@ export default async function Home() {
   const randomBackgroundImage = backgroundImageArray[Math.floor(Math.random() * backgroundImageArray.length)];
   
   return (
-    <div className="h-[100svh]">
+    <>
     <Image src={randomBackgroundImage} alt='' fill={true} className="object-cover"/>
     <Container>
       <Image width="256" height="256" src={require('/public/logo-crop.png')} alt=""/>
@@ -25,6 +25,6 @@ export default async function Home() {
       <p>Verkrijg inzicht over je voortgang middels eenvoudig te begrijpen visualisaties. Het is zo simpel als inloggen met een GitHub-account, en het kiezen van een repository.</p>
       <Options/>
     </Container>
-    </div>
+    </>
   )
 }
