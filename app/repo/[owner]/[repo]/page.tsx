@@ -1,6 +1,7 @@
 import { getServerSession } from "next-auth/next"
 import { authOptions } from "../../../api/auth/[...nextauth]/authoptions"
 
+import Navigation from "../../../navigation"
 import Details from "./details"
 import Chart from "./chart"
 
@@ -51,6 +52,7 @@ export default async function Repository({ params }: { params: { owner: string, 
   const issuesData = await fetchIssues(params.owner, params.repo);
   return (
     <>
+      <Navigation />
       <Details data={repositoryData} />
       <Chart data={issuesData} />
     </>
