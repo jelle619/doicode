@@ -17,17 +17,18 @@ function issueParser(data: any[]) {
       const task: Task = {
         name: issue["title"],
         start: start,
-        end: new Date(issue["closed_at"]) || dateParser(start, 5),
+        end: issue["closed_at"] ? new Date(issue["closed_at"]) : dateParser(start, 5),
         id: "Task " + issue["id"],
         type: "task",
         progress: closed ? 100 : 0,
         isDisabled: true,
         styles: { progressColor: '#0B4A69', progressSelectedColor: '#0B4A69' },
       }
+
       tasks.push(task);
     }
   }
-
+  
   return tasks;
 }
 
@@ -100,5 +101,7 @@ export default function Chart({ data }: { data: any }) {
     return (errorText)
   }
 
-  return <Gantt tasks={issueParser(data)} />;
+  // https://github.com/MaTeMaTuK/gantt-task-react/issues/218
+  // https://github.com/MaTeMaTuK/gantt-task-react/issues/216
+  return <Gantt tasks={issueParser(data)} locale="nl" todayColor="#ffe6e6"/>;
 }

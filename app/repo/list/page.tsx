@@ -1,6 +1,30 @@
+import { getServerSession } from "next-auth/next"
+import { authOptions } from "../../api/auth/[...nextauth]/authoptions"
 import List from "./list"
 
+async function fetchRepositories() {
+  const session = await getServerSession(authOptions);
+
+  // https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#list-repositories-for-the-authenticated-user
+  const response = await fetch("https://api.github.com/user/repos?sort=updated&per_page=100", {
+    headers: {
+      'Authorization': `Bearer ${session.access_token}`,
+      'X-GitHub-Api-Version': '2022-11-28',
+      'Accept': 'application/vnd.github+json'
+    },
+  });
+
+  if (!response.ok) {
+    // error handling
+  }
+
+  const data = await response.json();
+  
+  return data;
+}
+
 export default async function Repository() {
+  const data = await fetchRepositories();
   return (
     <>
       <div role="alert" className="alert alert-warning">
@@ -9,7 +33,7 @@ export default async function Repository() {
       </div>
       <br/>
       <h1>Repositorylijst</h1>
-      <List />
+      <List data={data}/>
     </>
   )
 }

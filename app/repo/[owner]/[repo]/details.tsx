@@ -6,9 +6,9 @@ export default function Details({data}: {data: any}) {
     <>
       <ul>
         <li>Repository: {data["name"]}</li>
-        <li>Owner {data["owner"]["login"]}</li>
-        <li>Visibility: {data["private"] ? "Private" : "Public"}</li>
-        <li>Issues: {data["open_issues_count"]}</li>
+        <li>Eigenaar: {data["owner"]["login"]}</li>
+        <li>Zichtbaarheid: {data["private"] ? "Privé" : "Openbaar"}</li>
+        <li>Geopende Issues: {data["open_issues_count"]}</li>
       </ul>
     </>
   )
