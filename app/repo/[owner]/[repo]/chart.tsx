@@ -22,7 +22,7 @@ function issueParser(data: any[]) {
         type: "task",
         progress: closed ? 100 : 0,
         isDisabled: true,
-        styles: { progressColor: '#0B4A69', progressSelectedColor: '#0B4A69' },
+        styles: { backgroundColor: "#ff4740", progressColor: '#0B4A69'},
       }
 
       tasks.push(task);
@@ -103,5 +103,5 @@ export default function Chart({ data }: { data: any }) {
 
   // https://github.com/MaTeMaTuK/gantt-task-react/issues/218
   // https://github.com/MaTeMaTuK/gantt-task-react/issues/216
-  return <Gantt tasks={issueParser(data)} locale="nl" todayColor="#ffe6e6"/>;
+  return <Gantt tasks={issueParser(data)} locale="nl" todayColor="rgba(115, 0, 89, 0.15)"/>;
 }

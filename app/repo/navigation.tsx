@@ -1,5 +1,7 @@
 'use client';
 
+import React, { useState } from 'react';
+
 import Image from 'next/image'
 import Link from 'next/link';
 
@@ -8,8 +10,13 @@ import { RiGitRepositoryFill } from "react-icons/ri";
 
 import { useSession, signIn, signOut } from "next-auth/react"
 
-export default function Navigation({repoFullName} : {repoFullName?: String}) {
+export default function Navigation({repoFullName, currentRoute} : {repoFullName?: String, currentRoute?: String}) {
   const { data: session, status } = useSession();
+
+  const [homeLoading, setHomeLoading] = useState(false);
+  const [listLoading, setListLoading] = useState(false);
+  const [repoLoading, setRepoLoading] = useState(false);
+
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
@@ -19,21 +26,21 @@ export default function Navigation({repoFullName} : {repoFullName?: String}) {
       <div className="navbar-center text-sm breadcrumbs max-w-[calc(100%-160px)] direction-rtl">
         <ul className="direction-ltr">
           <li>
-            <Link className="inline-flex gap-1 items-center]" href="/">
-              <MdHome />
+            <Link onClick={() => (currentRoute != "/") && setHomeLoading(true)} className="inline-flex gap-1 items-center]" href="/">
+              {homeLoading ? <span className="loading loading-spinner loading-xs"/> : <MdHome/>}
               Home
             </Link>
           </li>
           <li>
-            <Link className="inline-flex gap-1 items-center" href="/repo/list">
-              <MdList />
+            <Link onClick={() => (currentRoute != "/repo/list") && setListLoading(true)} className="inline-flex gap-1 items-center" href="/repo/list">
+              {listLoading ? <span className="loading loading-spinner loading-xs"/> : <MdList/>}
               Repositorylijst
             </Link>
           </li>
           {repoFullName &&
           <li>
-            <Link href={"/repo/" + repoFullName} className="inline-flex gap-1 items-center">
-              <RiGitRepositoryFill />
+            <Link onClick={() => (currentRoute != "/repo/" + repoFullName) && setRepoLoading(true)} href={"/repo/" + repoFullName} className="inline-flex gap-1 items-center">
+              {repoLoading ? <span className="loading loading-spinner loading-xs"/> : <RiGitRepositoryFill/>}
               {repoFullName}
             </Link>
           </li>

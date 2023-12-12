@@ -27,7 +27,7 @@ const config: Config = {
           "base-100": "#ffffff",
           "info": "#00b5ff",
           "success": "#00a96e",
-          "warning": "#ffbe00",
+          "warning": "#730059" || "#ffbe00",
           "error": "#ff5861",
         },
       },

@@ -4,7 +4,7 @@ import Content from "../content"
 export default function RepoListLayout({ children }: { children: React.ReactNode }) {
     return (
         <>
-            <Navigation/>
+            <Navigation currentRoute="/repo/list"/>
             <Content>
                 {children}
             </Content>
