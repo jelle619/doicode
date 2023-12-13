@@ -21,7 +21,6 @@ async function fetchRepository(owner: string, repo: string) {
   }
 
   const data = await response.json();
-  
   return data;
 }
 
@@ -32,7 +31,7 @@ async function fetchIssues(owner: string, repo: string) {
   let result: any[] = [];
 
   while (nextRequest != null) {
-      // https://docs.github.com/en/rest/issues/issues?apiVersion=2022-11-28#list-repository-issues
+    // https://docs.github.com/en/rest/issues/issues?apiVersion=2022-11-28#list-repository-issues
     const response = await fetch(nextRequest, {
       headers: {
         'Authorization': `Bearer ${session.access_token}`,
