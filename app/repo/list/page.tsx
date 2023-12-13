@@ -15,11 +15,10 @@ async function fetchRepositories() {
   });
 
   if (!response.ok) {
-    // error handling
+    console.error('Error fetching repository list from GitHub.');
   }
 
   const data = await response.json();
-  
   return data;
 }
 

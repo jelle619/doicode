@@ -17,7 +17,7 @@ async function fetchRepository(owner: string, repo: string) {
   });
 
   if (!response.ok) {
-    // error handling
+    console.error('Error fetching repository from GitHub.');
   }
 
   const data = await response.json();
@@ -41,7 +41,7 @@ async function fetchIssues(owner: string, repo: string) {
     });
 
     if (!response.ok) {
-      // error handling
+      console.error('Error fetching issues from GitHub.');
     }
 
     // add data to result
@@ -63,6 +63,22 @@ async function fetchIssues(owner: string, repo: string) {
 export default async function Repository({ params }: { params: { owner: string, repo: string } }) {
   const repositoryData = await fetchRepository(params.owner, params.repo);
   const issuesData = await fetchIssues(params.owner, params.repo);
+
+  // backend endpoint request
+  if (process.env.BACKEND_ENDPOINT != undefined) {
+      try {
+        const response = await fetch(process.env.BACKEND_ENDPOINT, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({"repository": repositoryData, "issues": issuesData}),
+        });
+      } catch (error) {
+        console.error('Error sending request to backend endpoint:', error);
+      }
+  }
+
   return (
     <>
       {issuesData.length >= 100 &&
