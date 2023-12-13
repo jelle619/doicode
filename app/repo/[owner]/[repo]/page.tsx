@@ -28,22 +28,37 @@ async function fetchRepository(owner: string, repo: string) {
 async function fetchIssues(owner: string, repo: string) {
   const session = await getServerSession(authOptions);
 
-  // https://docs.github.com/en/rest/issues/issues?apiVersion=2022-11-28#list-repository-issues
-  const response = await fetch("https://api.github.com/repos/" + owner + "/" + repo + "/issues?state=all&per_page=100", {
-    headers: {
-      'Authorization': `Bearer ${session.access_token}`,
-      'X-GitHub-Api-Version': '2022-11-28',
-      'Accept': 'application/vnd.github+json'
-    },
-  });
+  let nextRequest = "https://api.github.com/repos/" + owner + "/" + repo + "/issues?state=all&per_page=100&direction=asc";
+  let result: any[] = [];
 
-  if (!response.ok) {
-    // error handling
+  while (nextRequest != null) {
+      // https://docs.github.com/en/rest/issues/issues?apiVersion=2022-11-28#list-repository-issues
+    const response = await fetch(nextRequest, {
+      headers: {
+        'Authorization': `Bearer ${session.access_token}`,
+        'X-GitHub-Api-Version': '2022-11-28',
+        'Accept': 'application/vnd.github+json'
+      },
+    });
+
+    if (!response.ok) {
+      // error handling
+    }
+
+    // add data to result
+    const data = await response.json();
+    result = result.concat(data);
+
+    // determine next fetch
+    const linkHeader = response.headers.get('Link');
+    if (linkHeader?.includes('>; rel="next"')) {
+      nextRequest = linkHeader.split('>; rel="next"')[0].substring(1);
+    } else {
+      break
+    }
   }
 
-  const data = await response.json();
-
-  return data;
+  return result;
 }
 
 export default async function Repository({ params }: { params: { owner: string, repo: string } }) {
