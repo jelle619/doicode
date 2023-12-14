@@ -1,6 +1,6 @@
 # Front-end
-<img height="256" width="256" src="./public/logo.png">
-
+<img height="256" width="256" src="./public/logo-crop.png"><br>
+<br>
 You can [give Do I Code a try](https://do-i-code.com) in your browser right now!
 
 With Do I Code, you can achieve better insight into the progress you've made inside of GitHub repositories using easy-to-understand visualisations. To get started, simply login with a GitHub account and choose a repository.
