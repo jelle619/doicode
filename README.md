@@ -28,7 +28,13 @@ While this application can function on its own, it is possible to relay reposito
 BACKEND_ENDPOINT='https://example.com/api/put'
 ```
 
-When this environment variable is defined, JSON data will be sent to this endpoint using PUT requests. An example is provided below.
+In case your backend endpoint is public, you might want to protect it from unauthorized usage. This can be achieved by providing a password string with every request for the backend to check against. The password can be specified in the `.env.local` file as follows.
+
+```
+BACKEND_PASSWORD='example'
+```
+
+When these environment variables have been defined, JSON data will be sent to this endpoint using PUT requests. An example is provided below. We have assumed a password string is provided as well, which is optional.
 
 ```json
 {
@@ -40,11 +46,18 @@ When this environment variable is defined, JSON data will be sent to this endpoi
       ...
     },
     ...
-  ]
+  ],
+  "commits": [
+    {
+      ...
+    },
+    ...
+  ],
+  "password": "example"
 }
 ```
 
-The contents of `repository` is equal to the result of the [`/repos/{owner}/{repo}` GitHub REST API endpoint](https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#get-a-repository), whereas the contents of `issues` is equal to the result of the [`/repos/{owner}/{repo}/issues` GitHub REST API endpoint](https://docs.github.com/en/rest/issues/issues?apiVersion=2022-11-28#list-repository-issues).
+The contents of `repository` is equal to the result of the [`/repos/{owner}/{repo}` GitHub REST API endpoint](https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#get-a-repository), the contents of `issues` is equal to the result of the [`/repos/{owner}/{repo}/issues` GitHub REST API endpoint](https://docs.github.com/en/rest/issues/issues?apiVersion=2022-11-28#list-repository-issues) and the contents of `commits` is equal to the result of the [`/repos/{owner}/{repo}/commits` GitHub REST API endpoint](https://docs.github.com/en/rest/commits/commits?apiVersion=2022-11-28#list-commits).
 
 ## Design Guidelines
 <img height="192" src="./public/mockup-desktop.png"><img height="192" src="./public/mockup-phone.png"><br>
