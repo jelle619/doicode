@@ -1,5 +1,5 @@
 # Front-end
-<img height="256" width="256" src="./public/logo-crop.png"><br>
+<img height="192" width="192" src="./public/logo-crop.png"><br>
 <br>
 You can [give Do I Code a try](https://do-i-code.com) in your browser right now!
 
