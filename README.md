@@ -47,7 +47,8 @@ When this environment variable is defined, JSON data will be sent to this endpoi
 The contents of `repository` is equal to the result of the [`/repos/{owner}/{repo}` GitHub REST API endpoint](https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#get-a-repository), whereas the contents of `issues` is equal to the result of the [`/repos/{owner}/{repo}/issues` GitHub REST API endpoint](https://docs.github.com/en/rest/issues/issues?apiVersion=2022-11-28#list-repository-issues).
 
 ## Design Guidelines
-<img height="256" src="./public/mockup-desktop.png"><img height="256" src="./public/mockup-phone.png"><br>
+<img height="192" src="./public/mockup-desktop.png"><img height="192" src="./public/mockup-phone.png"><br>
+<br>
 A few design guidelines have been divised to improve the consistency or the interface of the application. Please adhere to these guidelines when developing the interface and update them when necessary.
 
 ### Font
