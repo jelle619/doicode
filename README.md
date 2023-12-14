@@ -57,7 +57,7 @@ The application makes use of the "Sora" font, designed by Jonathan Barnbrook and
 ### Color Palette
 [![Color Palette](./public/palette.png)](./public/palette.pdf)
 
-## Responsibility Disclosure
+## AI Disclosure
 The logo and the various backgrounds that can be found in this project were created with the help of AI, and serve mostly as a placeholder. Please refrain from using this media in a commercial context. The particular files are as follows.
 
 - `/public/logo.png`
