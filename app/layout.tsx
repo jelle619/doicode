@@ -3,7 +3,7 @@ import { Sora } from 'next/font/google'
 import './globals.css'
 import Provider from './provider'
 
-export const revalidate = 3600;
+export const revalidate = 60;
 
 const sora = Sora({ subsets: ['latin'] })
 
