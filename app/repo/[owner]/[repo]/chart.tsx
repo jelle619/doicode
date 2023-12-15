@@ -25,10 +25,12 @@ function issueParser(data: any[]) {
         styles: { backgroundColor: "#ff4740", progressColor: '#0B4A69'},
       }
 
-      tasks.push(task);
+      if (task.start < task.end) {
+        tasks.push(task);
+      }
     }
   }
-  
+  console.log(tasks);
   return tasks;
 }
 
@@ -89,6 +91,7 @@ const errorText =
     <ul>
       <li>Zorg dat je repositories gebruikt maakt van <Link href="https://docs.github.com/en/issues">Issues</Link>.</li>
       <li>Maak labels aan voor iedere week van het jaar. Gebruik hiervoor het formaat &quot;week-x&quot;, waarbij &quot;x&quot; het weeknummer is.</li>
+      <li>Issues die op "closed" zijn gezet vóór de geplande week van het huidige jaar worden niet opgenomen.</li>
       <li>Als je pas je repository goed hebt ingesteld, kan het nog even duren voordat deze data beschikbaar komt.</li>
     </ul>
     <p>Heb je je repository goed ingesteld, maar krijg je nog steeds deze melding? Neem met ons contact op via <Link href="mailto:&#099;&#111;&#110;&#116;&#097;&#099;&#116;&#064;&#100;&#111;&#045;&#105;&#045;&#099;&#111;&#100;&#101;&#046;&#099;&#111;&#109;">&#099;&#111;&#110;&#116;&#097;&#099;&#116;&#064;&#100;&#111;&#045;&#105;&#045;&#099;&#111;&#100;&#101;&#046;&#099;&#111;&#109;</Link>.</p>
