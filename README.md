@@ -86,4 +86,4 @@ The logo and the various backgrounds that can be found in this project were crea
 
 
 ## Issues
-When reporting issues, please be as descriptive as possible.
+When reporting issues, please be as descriptive as possible. For immediate support, you may contact us at contact@do-i-code.com.
