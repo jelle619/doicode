@@ -22,7 +22,7 @@ NEXTAUTH_SECRET='' # run to generate: openssl rand -base64 32
 ```
 
 ### Configure backend endpoint
-While this application can function on its own, it is possible to relay repository and issue information to a backend component. This means that every time the application fetches this data from GitHub, it will also send this data to a given endpoint (using the `PUT` request method). To enable this functionality, add the following environment variable to your `.env.local` file.
+While this application can function on its own, it is possible to relay repository and issue information to a backend component. This means that every time the application fetches this data from GitHub, it will also send this data to a given endpoint. To enable this functionality, add the following environment variable to your `.env.local` file.
 
 ```
 BACKEND_ENDPOINT='https://example.com/api/put'
